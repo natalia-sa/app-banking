@@ -6,6 +6,8 @@ import com.natalia.banking.model.Account;
 import com.natalia.banking.repository.AccountRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AccountService {
 
@@ -19,6 +21,11 @@ public class AccountService {
         Account account = new Account(dto.number(), dto.balance());
         Account savedAccount = accountRepository.save(account);
         return new AccountDto(savedAccount);
+    }
+
+    public Optional<AccountDto> findByNumber(Integer number) {
+        return accountRepository.findByAccountNumber(number)
+                .map(AccountDto::new);
     }
 
 }

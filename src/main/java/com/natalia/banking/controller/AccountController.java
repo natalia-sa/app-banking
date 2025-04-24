@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/conta")
 public class AccountController {
@@ -36,8 +38,14 @@ public class AccountController {
     @Operation(summary = "Get account information")
     public ResponseEntity getInfo(@RequestParam("numero_conta") Integer accountNumber) {
         try {
-            System.out.println("account number:: " + accountNumber);
-            return new ResponseEntity<>(HttpStatus.OK);
+            Optional<AccountDto> optionalAccountDto = this.accountService.findByNumber(accountNumber);
+
+            if(optionalAccountDto.isPresent()) {
+                return new ResponseEntity<>(optionalAccountDto.get(), HttpStatus.OK);
+            }
+
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
