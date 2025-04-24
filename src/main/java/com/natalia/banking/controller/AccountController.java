@@ -1,11 +1,8 @@
 package com.natalia.banking.controller;
 
-import com.natalia.banking.dto.AccountRequestDto;
+import com.natalia.banking.dto.AccountDto;
+import com.natalia.banking.service.AccountService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,15 +12,21 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/conta")
 public class AccountController {
 
+    private AccountService accountService;
+
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
+    }
+
     @PostMapping(value = "")
     @Operation(summary = "Create new account")
     public ResponseEntity create(
             @RequestBody
             @Valid
-            AccountRequestDto dto) {
+            AccountDto dto) {
         try {
-            System.out.println("body:: " + dto);
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            AccountDto savedAccount = this.accountService.save(dto);
+            return new ResponseEntity<>(savedAccount, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

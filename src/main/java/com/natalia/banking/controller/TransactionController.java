@@ -1,6 +1,5 @@
 package com.natalia.banking.controller;
 
-import com.natalia.banking.dto.AccountRequestDto;
 import com.natalia.banking.dto.TransactionRequestDto;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
