@@ -14,7 +14,7 @@ import java.util.Optional;
 @RequestMapping("/conta")
 public class AccountController {
 
-    private AccountService accountService;
+    private final AccountService accountService;
 
     public AccountController(AccountService accountService) {
         this.accountService = accountService;
