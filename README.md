@@ -6,6 +6,7 @@
 - Spring Boot
 - Spring Web
 - Spring Data JPA
+- Gradle
 - H2 Database
 - Lombok
 - Swagger
