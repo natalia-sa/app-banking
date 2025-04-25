@@ -17,6 +17,12 @@ public class AccountService {
     private final AccountRepository accountRepository;
 
     public AccountDto save(AccountDto dto) {
+        Optional<Account> existingAccount = accountRepository.findByAccountNumber(dto.number());
+
+        if (existingAccount.isPresent()) {
+            throw new IllegalArgumentException("Conta já existente");
+        }
+
         Account account = new Account(dto.number(), dto.balance());
         Account savedAccount = accountRepository.save(account);
         return new AccountDto(savedAccount);
