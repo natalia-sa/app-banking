@@ -76,4 +76,34 @@ class AccountControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    void shouldReturnBadRequestWhenAccountNumberIsNull() throws Exception {
+        AccountDto requestDto = new AccountDto(null, 500.0);
+
+        mockMvc.perform(post("/conta")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnBadRequestWhenBalanceIsNull() throws Exception {
+        AccountDto requestDto = new AccountDto(123, null);
+
+        mockMvc.perform(post("/conta")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnBadRequestWhenBalanceIsNegative() throws Exception {
+        AccountDto requestDto = new AccountDto(123, -12.0);
+
+        mockMvc.perform(post("/conta")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
 }

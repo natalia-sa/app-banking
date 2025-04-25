@@ -78,4 +78,52 @@ class TransactionControllerTest {
                         .content(objectMapper.writeValueAsString(requestDto)))
                 .andExpect(status().isInternalServerError());
     }
+
+    @Test
+    void shouldReturnBadRequestWhenTransactionTypeIsnull() throws Exception {
+        TransactionRequestDto requestDto = new TransactionRequestDto(
+                null, 789, 1000.0
+        );
+
+        mockMvc.perform(post("/transacao")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnBadRequestWhenAccountNumberIsnull() throws Exception {
+        TransactionRequestDto requestDto = new TransactionRequestDto(
+                TransactionType.C, null, 1000.0
+        );
+
+        mockMvc.perform(post("/transacao")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnBadRequestWhenValueIsnull() throws Exception {
+        TransactionRequestDto requestDto = new TransactionRequestDto(
+                TransactionType.C, 123, null
+        );
+
+        mockMvc.perform(post("/transacao")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void shouldReturnBadRequestWhenValueIsNegative() throws Exception {
+        TransactionRequestDto requestDto = new TransactionRequestDto(
+                TransactionType.C, 123, -120.0
+        );
+
+        mockMvc.perform(post("/transacao")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestDto)))
+                .andExpect(status().isBadRequest());
+    }
 }
