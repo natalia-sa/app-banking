@@ -5,6 +5,7 @@ import com.natalia.banking.dto.transaction.TransactionRequestDto;
 import com.natalia.banking.service.transaction.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +17,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/transacao")
+@RequiredArgsConstructor
 public class TransactionController {
 
     private final TransactionService transactionService;
-
-    public TransactionController(TransactionService transactionService) {
-        this.transactionService = transactionService;
-    }
 
     @PostMapping(value = "")
     @Operation(summary = "Make new transaction")
