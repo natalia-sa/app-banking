@@ -58,3 +58,7 @@ Realiza uma transação em uma conta bancária
     "numero_conta": 1234,
     "valor": 150
   }
+
+## Cobertura de testes
+![image](https://github.com/user-attachments/assets/d2eb3f1a-4841-4c5e-b972-528f8bd1d532)
+
