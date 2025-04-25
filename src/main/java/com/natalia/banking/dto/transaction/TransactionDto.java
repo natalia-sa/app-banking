@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
-public record TransactionRequestDto(
+public record TransactionDto(
 
         @JsonProperty("forma_pagamento")
         @Schema(description = "Forma de pagamento da transação", example = "P")

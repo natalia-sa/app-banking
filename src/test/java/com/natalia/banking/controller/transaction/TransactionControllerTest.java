@@ -2,7 +2,7 @@ package com.natalia.banking.controller.transaction;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.natalia.banking.dto.account.AccountDto;
-import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.dto.transaction.TransactionDto;
 import com.natalia.banking.enums.transaction.TransactionType;
 import com.natalia.banking.service.transaction.TransactionService;
 import org.junit.jupiter.api.Test;
@@ -33,7 +33,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldMakeTransaction() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.P, 123, 100.0
         );
 
@@ -51,7 +51,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnNotFoundWhenTransactionFails() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.C, 456, 500.0
         );
 
@@ -66,7 +66,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnInternalServerErrorWhenExceptionThrown() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.D, 789, 1000.0
         );
 
@@ -81,7 +81,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenTransactionTypeIsnull() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 null, 789, 1000.0
         );
 
@@ -93,7 +93,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenAccountNumberIsnull() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.C, null, 1000.0
         );
 
@@ -105,7 +105,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenValueIsnull() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.C, 123, null
         );
 
@@ -117,7 +117,7 @@ class TransactionControllerTest {
 
     @Test
     void shouldReturnBadRequestWhenValueIsNegative() throws Exception {
-        TransactionRequestDto requestDto = new TransactionRequestDto(
+        TransactionDto requestDto = new TransactionDto(
                 TransactionType.C, 123, -120.0
         );
 

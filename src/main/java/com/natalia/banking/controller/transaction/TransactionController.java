@@ -1,7 +1,7 @@
 package com.natalia.banking.controller.transaction;
 
 import com.natalia.banking.dto.account.AccountDto;
-import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.dto.transaction.TransactionDto;
 import com.natalia.banking.service.transaction.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
@@ -23,11 +23,11 @@ public class TransactionController {
     private final TransactionService transactionService;
 
     @PostMapping(value = "")
-    @Operation(summary = "Make new transaction")
+    @Operation(summary = "Realiza nova transação")
     public ResponseEntity create(
             @RequestBody
             @Valid
-            TransactionRequestDto dto) {
+            TransactionDto dto) {
         try {
             Optional<AccountDto> optionalAccountDto = transactionService.makeTransaction(dto);
             if(optionalAccountDto.isPresent()) {

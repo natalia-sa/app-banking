@@ -1,7 +1,7 @@
 package com.natalia.banking.service.transaction;
 
 import com.natalia.banking.dto.account.AccountDto;
-import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.dto.transaction.TransactionDto;
 import com.natalia.banking.enums.transaction.TransactionType;
 import com.natalia.banking.service.account.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,7 @@ public class TransactionService {
 
     private final AccountService accountService;
 
-    public Optional<AccountDto> makeTransaction(TransactionRequestDto dto) {
+    public Optional<AccountDto> makeTransaction(TransactionDto dto) {
         double total = calculateValueWithFee(dto.value(), dto.transactionType());
         return accountService.updateBalance(dto.accountNumber(), total);
     }

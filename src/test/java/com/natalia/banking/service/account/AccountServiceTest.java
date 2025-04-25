@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.never;
@@ -37,6 +38,20 @@ class AccountServiceTest {
         assertThat(result.balance()).isEqualTo(200.0);
 
         verify(accountRepository).save(any(Account.class));
+    }
+
+    @Test
+    void shouldNotSaveWhenAccountAlreadyExists() {
+        Account account = new Account(123, 200.0);
+        AccountDto dto = new AccountDto(account);
+
+        when(accountRepository.findByAccountNumber(123)).thenReturn(Optional.of(account));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            accountService.save(dto);
+        });
+
+        verify(accountRepository, never()).save(any());
     }
 
     @Test

@@ -20,7 +20,7 @@ public class AccountController {
     private final AccountService accountService;
 
     @PostMapping(value = "")
-    @Operation(summary = "Create new account")
+    @Operation(summary = "Cria nova conta")
     public ResponseEntity create(
             @RequestBody
             @Valid
@@ -34,7 +34,7 @@ public class AccountController {
     }
 
     @GetMapping(value = "")
-    @Operation(summary = "Get account information")
+    @Operation(summary = "Busca uma conta pelo seu numero")
     public ResponseEntity getInfo(
             @Parameter(description = "Número da conta", example = "1234")
             @RequestParam("numero_conta") Integer accountNumber) {

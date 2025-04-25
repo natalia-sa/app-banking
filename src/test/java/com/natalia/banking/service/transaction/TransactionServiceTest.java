@@ -1,7 +1,7 @@
 package com.natalia.banking.service.transaction;
 
 import com.natalia.banking.dto.account.AccountDto;
-import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.dto.transaction.TransactionDto;
 import com.natalia.banking.enums.transaction.TransactionType;
 import com.natalia.banking.model.account.Account;
 import com.natalia.banking.repository.account.AccountRepository;
@@ -32,7 +32,7 @@ class TransactionServiceTest {
         when(accountRepository.findByAccountNumber(1)).thenReturn(Optional.of(account));
         when(accountRepository.save(any())).thenAnswer(i -> i.getArgument(0));
 
-        TransactionRequestDto dto = new TransactionRequestDto(TransactionType.D, 1, 100.0);
+        TransactionDto dto = new TransactionDto(TransactionType.D, 1, 100.0);
 
         Optional<AccountDto> result = transactionService.makeTransaction(dto);
 
@@ -46,7 +46,7 @@ class TransactionServiceTest {
         when(accountRepository.findByAccountNumber(1)).thenReturn(Optional.of(account));
         when(accountRepository.save(any())).thenAnswer(i -> i.getArgument(0));
 
-        TransactionRequestDto dto = new TransactionRequestDto(TransactionType.C, 1, 200.0);
+        TransactionDto dto = new TransactionDto(TransactionType.C, 1, 200.0);
 
         Optional<AccountDto> result = transactionService.makeTransaction(dto);
 
@@ -60,7 +60,7 @@ class TransactionServiceTest {
         when(accountRepository.findByAccountNumber(1)).thenReturn(Optional.of(account));
         when(accountRepository.save(any())).thenAnswer(i -> i.getArgument(0));
 
-        TransactionRequestDto dto = new TransactionRequestDto(TransactionType.P, 1, 50.0);
+        TransactionDto dto = new TransactionDto(TransactionType.P, 1, 50.0);
 
         Optional<AccountDto> result = transactionService.makeTransaction(dto);
 
@@ -73,7 +73,7 @@ class TransactionServiceTest {
         Account account = new Account(1, 20.0);
         when(accountRepository.findByAccountNumber(1)).thenReturn(Optional.of(account));
 
-        TransactionRequestDto dto = new TransactionRequestDto(TransactionType.C, 1, 50.0);
+        TransactionDto dto = new TransactionDto(TransactionType.C, 1, 50.0);
 
         Optional<AccountDto> result = transactionService.makeTransaction(dto);
 
