@@ -1,9 +1,9 @@
-package com.natalia.banking.service;
+package com.natalia.banking.service.account;
 
 
-import com.natalia.banking.dto.AccountDto;
-import com.natalia.banking.model.Account;
-import com.natalia.banking.repository.AccountRepository;
+import com.natalia.banking.dto.account.AccountDto;
+import com.natalia.banking.model.account.Account;
+import com.natalia.banking.repository.account.AccountRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 

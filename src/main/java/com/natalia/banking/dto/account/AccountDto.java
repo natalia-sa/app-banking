@@ -1,7 +1,7 @@
-package com.natalia.banking.dto;
+package com.natalia.banking.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.natalia.banking.model.Account;
+import com.natalia.banking.model.account.Account;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public record AccountDto(

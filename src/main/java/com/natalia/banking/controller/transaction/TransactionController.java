@@ -1,8 +1,8 @@
-package com.natalia.banking.controller;
+package com.natalia.banking.controller.transaction;
 
-import com.natalia.banking.dto.AccountDto;
-import com.natalia.banking.dto.TransactionRequestDto;
-import com.natalia.banking.service.TransactionService;
+import com.natalia.banking.dto.account.AccountDto;
+import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.service.transaction.TransactionService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
-package com.natalia.banking.repository;
+package com.natalia.banking.repository.account;
 
-import com.natalia.banking.model.Account;
+import com.natalia.banking.model.account.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

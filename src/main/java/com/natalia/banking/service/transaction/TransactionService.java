@@ -1,8 +1,9 @@
-package com.natalia.banking.service;
+package com.natalia.banking.service.transaction;
 
-import com.natalia.banking.dto.AccountDto;
-import com.natalia.banking.dto.TransactionRequestDto;
-import com.natalia.banking.enums.TransactionType;
+import com.natalia.banking.dto.account.AccountDto;
+import com.natalia.banking.dto.transaction.TransactionRequestDto;
+import com.natalia.banking.enums.transaction.TransactionType;
+import com.natalia.banking.service.account.AccountService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;

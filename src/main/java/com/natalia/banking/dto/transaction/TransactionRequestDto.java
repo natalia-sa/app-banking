@@ -1,7 +1,7 @@
-package com.natalia.banking.dto;
+package com.natalia.banking.dto.transaction;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.natalia.banking.enums.TransactionType;
+import com.natalia.banking.enums.transaction.TransactionType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 public record TransactionRequestDto(

@@ -1,4 +1,4 @@
-package com.natalia.banking.model;
+package com.natalia.banking.model.account;
 
 
 import jakarta.persistence.Entity;
